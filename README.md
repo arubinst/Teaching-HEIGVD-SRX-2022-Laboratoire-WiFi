@@ -105,17 +105,18 @@ Maintenant que vous avez la clé WEP, configurez la dans Wireshark afin de déch
 
 > **_Question :_** Combien de temps avez-vous attendu pour obtenir la clé WEP ?
 >
-> **_Réponse :_**
+> **_Réponse :_** Rien du tout, pas même une seconde
 
 ---
 > **_Montrer une capture d'écran de l'obtention de la clé WEP_**
 >
 > **_Capture ici_**
+![Capture d'écran du break WEP](./images/wep-crack.png)
 
 ---
 > **_Question :_** Arrivez-vous à récupérer les informations d’identification (credentials) de l’authentification basique http contenue dans la capture ?
 >
-> **_Réponse :_**
+> **_Réponse :_** Oui, les creds sont admin:admin
 
 ---
 
