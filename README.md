@@ -195,11 +195,11 @@ Nous avons enlevé une seule trame (choisie stratégiquement) du fichier de capt
 
 > **_Question :_** Est-ce que vous arrivez à refaire l'exercice ? Pourquoi ou pourquoi pas ?
 >
-> **_Réponse :_**
+> **_Réponse :_** Non, car le deuxième paquet qui contient la passphrase a été supprimé
 
 ---
 > **_Question :_** Sur la base de votre réponse précédente, arrivez-vous à déduire quelle trame a été effacée ?
 
 >
-> **_Réponse :_**
+> **_Réponse :_** Le deuxième paquet du 4-way handshake.
 >
