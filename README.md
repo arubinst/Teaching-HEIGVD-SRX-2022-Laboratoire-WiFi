@@ -2,11 +2,11 @@
 
 ## Ce travail de laboratoire ne sera ni corrigé ni noté
 
-Vous aurez besoin de ``Wireshark`` et du logiciel ``aircrack-ng`` pour ce laboratoire. 
+Vous aurez besoin de ``Wireshark`` et du logiciel ``aircrack-ng`` pour ce laboratoire.
 
 Si vous utilisez une distribution Kali, tout est déjà pré-installé. Pour la version Windows du logiciel ``aircrack-ng``ou pour son installation sur d'autres distributions, référez-vous au
 [site web aircrack-ng](https://aircrack-ng.org) et/ou au gestionnaire de paquets de votre distribution.
- 
+
 # Identification d'un dispositif
 
 ## Introduction
@@ -21,11 +21,11 @@ L’une des informations de plus intéressantes et utiles que l’on peut obteni
 
 Dans ce type de trame, utilisée par les clients pour la recherche active de réseaux, on peut retrouver :
 
-* L’adresse physique (MAC) du client (sauf pour dispositifs iOS 8 ou plus récents et les versions les plus récentes d'Android…). 
+* L’adresse physique (MAC) du client (sauf pour dispositifs iOS 8 ou plus récents et les versions les plus récentes d'Android…).
 	* Utilisant l’adresse physique, on peut faire une hypothèse sur le constructeur du dispositif sans fils utilisé par la cible.
 	* Elle peut aussi être utilisée pour identifier la présence de ce même dispositif à des différents endroits géographiques où l’on fait des captures, même si le client ne se connecte pas à un réseau sans fils.
 * Des noms de réseaux (SSID) recherchés par le client.
-	* Un Probe Request peut être utilisé pour « tracer » les pas d’un client. Si une trame Probe Request annonce le nom du réseau d’un hôtel en particulier, par exemple, ceci est une bonne indication que le client s’est déjà connecté au dit réseau. 
+	* Un Probe Request peut être utilisé pour « tracer » les pas d’un client. Si une trame Probe Request annonce le nom du réseau d’un hôtel en particulier, par exemple, ceci est une bonne indication que le client s’est déjà connecté au dit réseau.
 	* Un Probe Request peut être utilisé pour proposer un réseau « evil twin » à la cible.
 
 ## Travail à réaliser
@@ -39,27 +39,27 @@ Nous savons que la cible s’est hébergée à l’hôtel « Black Rain » et qu
 * Copier [le fichier de capture](files/coursWLAN-IdentifyTarget.pcap) sur votre machine locale
 * Ouvrir le fichier avec Wireshark
 * Analyser la capture pour déterminer l’adresse MAC du dispositif de la cible
-* Utiliser un filtre d’affichage Wireshark pour montrer uniquement les trames du type ``Probe Request`` 
+* Utiliser un filtre d’affichage Wireshark pour montrer uniquement les trames du type ``Probe Request``
 * Répondre aux questions suivantes :
 
 > **_Question :_** Quel filtre avez-vous utilisé
-> 
-> **_Réponse :_** 
+>
+> **_Réponse :_** wlan.fc.type_subtype == 0x04
 
 ---
 > **_Question :_** Quel est l’adresse MAC de la cible ?
-> 
-> **_Réponse :_** 
+>
+> **_Réponse :_** fc:f1:36:22:49:74
 
 ---
 > **_Question :_** Quel est le nom du constructeur de l’interface sans fils de la cible ?
-> 
-> **_Réponse :_** 
+>
+> **_Réponse :_** SamsungE
 
 ---
 > **_Question :_** Quel autres endroits la cible a-t-elle probablement visités ?
-> 
-> **_Réponse :_** 
+>
+> **_Réponse :_** Starbucks, Fleur de Pains, GVA Airport et Migros
 
 ---
 
@@ -67,7 +67,7 @@ Nous savons que la cible s’est hébergée à l’hôtel « Black Rain » et qu
 
 ## Introduction
 
-La norme originale 802.11 spécifie WEP comme étant une méthode pour gérer l’accès au réseau (authentification) et pour la confidentialité de données (chiffrement). 
+La norme originale 802.11 spécifie WEP comme étant une méthode pour gérer l’accès au réseau (authentification) et pour la confidentialité de données (chiffrement).
 
 Bien que trouvée faible et exploitée depuis de nombreuses années, cette méthode continue à être utilisée dans beaucoup de pays. Elle est toujours très répandue dans plusieurs zones du tiers monde, mais on retrouve avec étonnement des réseaux WEP aux USA et dans des pays de l’Europe et l'Asie.
 
@@ -104,18 +104,18 @@ Maintenant que vous avez la clé WEP, configurez la dans Wireshark afin de déch
 * Répondre aux questions suivantes :
 
 > **_Question :_** Combien de temps avez-vous attendu pour obtenir la clé WEP ?
-> 
-> **_Réponse :_** 
+>
+> **_Réponse :_**
 
 ---
 > **_Montrer une capture d'écran de l'obtention de la clé WEP_**
-> 
-> **_Capture ici_** 
+>
+> **_Capture ici_**
 
 ---
 > **_Question :_** Arrivez-vous à récupérer les informations d’identification (credentials) de l’authentification basique http contenue dans la capture ?
-> 
-> **_Réponse :_** 
+>
+> **_Réponse :_**
 
 ---
 
@@ -141,8 +141,8 @@ Nous utiliserons Wireshark pour trouver l’authentification WPA contenue dans l
 * Analyser les messages du 4-way handshake. En particulier, essayer de trouver les chiffres aléatoires (Nonces) échangés entre le client et l’AP.
 
 > **_Fournir une capture d'écran des chiffres aléatoires_**
-> 
-> **_Capture ici_** 
+>
+> **_Capture ici_**
 
 ---
 
@@ -151,9 +151,9 @@ Nous utiliserons Wireshark pour trouver l’authentification WPA contenue dans l
 
 Nous allons nous servir de l’outil aircrack-ng et d’un dictionnaire pour retrouver la passphrase utilisée pour protéger un réseau dont nous avons une capture. Une fois la passphrase récupérée, nous l’utiliserons dans Wireshark pour rendre la capture lisible.
 
-* Copier [le dictionnaire](files/french_dico.txt) sur votre machine locale 
+* Copier [le dictionnaire](files/french_dico.txt) sur votre machine locale
 * Utilisez aircrack-ng en ligne de commandes pour cracker la passphrase du réseau WPA avec le même [fichier de capture chiffrée avec WPA](files/coursWLAN-WPA.cap) que vous avez déjà copié.
- 
+
 ```
 aircrack-ng <nom-du-fichier-capture> -w <nom-du-dictionnaire>
 ```
@@ -163,20 +163,20 @@ aircrack-ng <nom-du-fichier-capture> -w <nom-du-dictionnaire>
 * Répondre aux questions suivantes :
 
 > **_Question :_** Combien de temps avez-vous attendu pour obtenir la passphrase WPA ?
-> 
-> **_Réponse :_** 
+>
+> **_Réponse :_**
 
 ---
 > **_Montrer une capture d'écran de l'obtention de la passphrase WPA_**
-> 
-> **_Capture ici_** 
+>
+> **_Capture ici_**
 
 ---
 > **_Question :_** Lors de la capture, la cible a fait un « ping » sur un serveur. Arrivez-vous à dire de quel serveur il s’agit ?
 
-> 
-> **_Réponse :_** 
-> 
+>
+> **_Réponse :_**
+>
 > Adresse IP du serveur : ?
 >
 > Nom de Domaine : ?
@@ -190,12 +190,12 @@ Nous avons enlevé une seule trame (choisie stratégiquement) du fichier de capt
 * Répondre aux questions suivantes :
 
 > **_Question :_** Est-ce que vous arrivez à refaire l'exercice ? Pourquoi ou pourquoi pas ?
-> 
-> **_Réponse :_** 
+>
+> **_Réponse :_**
 
 ---
 > **_Question :_** Sur la base de votre réponse précédente, arrivez-vous à déduire quelle trame a été effacée ?
 
-> 
-> **_Réponse :_** 
-> 
+>
+> **_Réponse :_**
+>
