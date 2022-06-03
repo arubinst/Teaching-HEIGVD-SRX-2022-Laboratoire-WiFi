@@ -144,6 +144,8 @@ Nous utiliserons Wireshark pour trouver l’authentification WPA contenue dans l
 > **_Fournir une capture d'écran des chiffres aléatoires_**
 >
 > **_Capture ici_**
+Il s'agit du WPA Key Nonce
+![Capture des chiffres aléatoires](./images/wpa-4way.png)
 
 ---
 
@@ -165,22 +167,23 @@ aircrack-ng <nom-du-fichier-capture> -w <nom-du-dictionnaire>
 
 > **_Question :_** Combien de temps avez-vous attendu pour obtenir la passphrase WPA ?
 >
-> **_Réponse :_**
+> **_Réponse :_** Quelques secondes, puisque mon Mac est un peu vieux :)
 
 ---
 > **_Montrer une capture d'écran de l'obtention de la passphrase WPA_**
 >
 > **_Capture ici_**
+![Break de la passphrase WPA](./images/wpa-crack.png)
 
 ---
 > **_Question :_** Lors de la capture, la cible a fait un « ping » sur un serveur. Arrivez-vous à dire de quel serveur il s’agit ?
 
 >
-> **_Réponse :_**
+> **_Réponse :_** Oui.
 >
-> Adresse IP du serveur : ?
+> Adresse IP du serveur : 31.13.64.35
 >
-> Nom de Domaine : ?
+> Nom de Domaine : edge-star-mini-shv-01-amt2.facebook.com. soit facebook.com simplement
 
 
 
